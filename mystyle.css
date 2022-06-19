@@ -1,0 +1,30 @@
+p{
+    font-size: 1em;
+    color: #000000;
+}
+body{
+    background-color: rgb(130, 225, 238);
+    /* background-image: url("homebackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+  
+  .btn-primary {
+    width:100px;
+    height:100px;
+  } 
+
+  .text-center-class {
+    /*border:solid;*/
+    text-align:center;
+    /*top:20%*/;
+  }
+
+  .row{
+    height:140px;
+    /* border:solid; */
+  }
+
+  .inline-buttonspace{
+    height:120px;
+  }

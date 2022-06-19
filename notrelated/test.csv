@@ -1,0 +1,3 @@
+inputName,address,city,state,zipCode,cardType,creditCardNumber,creditCardMont,creditCardYear,nameOnCard,rememberMe 
+adam,12 dead road,leeds,england,12345,visa,777,6,2022,John smith,on
+saghir,50 dead road,bradford,wales,67890,visa,999,7,2022,saghir ayub,off

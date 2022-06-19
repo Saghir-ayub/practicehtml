@@ -1,0 +1,85 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"> </script>
+	<script src="script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="papaparse.min.js"></script>
+	<script src="papaparse.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<title>Game 1</title>
+</head>
+<body>
+<input type="file" id="upload-csv" accept=".csv">
+<button id="btn-upload-csv">Read CSV</button>
+<button id="showall">Show all</button>
+<!-- <div id="shuffle" style="width:60%" class="container text-center-class divver">
+	<div class="row align-items-center">
+		<div class="col">
+			<button id="btn_a1" class="btn btn-primary" >a1</button>
+		</div>
+		<div class="col">
+			<button id="btn_a2" class="btn btn-primary">a2</button>
+		</div>
+	</div>
+	<div class="row align-items-center">
+		<div class="col">
+			<button id="btn_b1" class="btn btn-primary">b1</button>
+		</div>
+		<div class="col">
+			<button id="btn_b2" class="div btn btn-primary">b2</button>
+		</div>
+	</div>
+	<div class="row align-items-center">
+		<div class="col">
+			<button id="btn_c1" class="btn btn-primary">c1</button>
+		</div>
+		<div class="col">
+			<button id="btn_c2" class="div btn btn-primary">c2</button>
+		</div>
+	</div>
+	<div class="row align-items-center">
+		<div class="col">
+			<button id="btn_d1" class="btn btn-primary">d1</button>
+		</div>
+		<div class="col">
+			<button id="btn_d2" class="div btn btn-primary">d2</button>
+		</div>
+	</div>
+</div> -->
+<div style="height:20px"></div>
+<div style="width:60%" class="container text-center-class">
+	<div class="row align-items-center">
+		<div class="col">
+		<div class="inline-buttonspace">
+			<button id="btn_a1" class="btn btn-primary" >a1</button>
+		</div>
+		<div class="inline-buttonspace">
+			<button id="btn_b1" class="btn btn-primary">b1</button>
+		</div>
+		<div class="inline-buttonspace">
+			<button id="btn_c1" class="btn btn-primary">c1</button>
+		</div>
+		<div class="inline-buttonspace">
+			<button id="btn_d1" class="btn btn-primary">d1</button>
+		</div>
+		</div>
+		<div id="shuffle" class="col">
+		<div class="inline-buttonspace">
+			<button id="btn_a2" class="btn btn-primary">a2</button>
+		</div>
+		<div class="inline-buttonspace">
+			<button id="btn_b2" class="div btn btn-primary">b2</button>
+		</div>
+		<div class="inline-buttonspace">
+			<button id="btn_c2" class="div btn btn-primary">c2</button>
+		</div>
+		<div class="inline-buttonspace">
+			<button id="btn_d2" class="div btn btn-primary">d2</button>
+		</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
