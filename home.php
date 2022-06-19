@@ -58,7 +58,7 @@ session_start();
 <div>
 <h1 class="text-center-class">Hello, <?php echo $_SESSION['name']; ?></h1>
 </div>
-
+<p>test</p>
 </body>
 
 </html>
