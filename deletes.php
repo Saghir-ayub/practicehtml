@@ -14,9 +14,9 @@ if (isset($_POST['applicationiddelete'])) {
      }
      $idv = validate($_POST['applicationiddelete']);
 
-     $db = new SQLite3('stuffed_face.sq3');
+     $db = new SQLite3('gp_appointments.sq3');
 
-     $sql = "DELETE FROM Item WHERE id='".$idv."'";
+     $sql = "DELETE FROM Appointment WHERE App_id='".$idv."'";
 
      $result = $db->query($sql);
 

@@ -1,6 +1,6 @@
 <?php 
 
-if (isset($_POST['applicationid'])) {
+if (isset($_POST['applicationidcancel'])) {
     function validate($data){
 
         // $data = trim($data);
@@ -12,12 +12,12 @@ if (isset($_POST['applicationid'])) {
         return $data;
  
      }
-     $idv = validate($_POST['applicationid']);
+     $idv = validate($_POST['applicationidcancel']);
 
 
      $db = new SQLite3('gp_appointments.sq3');
 
-     $sql = "UPDATE Appointment SET Confirmation = 'Approved' WHERE App_id='".$idv."'";
+     $sql = "UPDATE Appointment SET Confirmation = 'Cancelled' WHERE App_id='".$idv."'";
 
      $result = $db->query($sql);
 

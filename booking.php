@@ -59,18 +59,28 @@ if(isset($_SESSION['username'])) {
 	<form action="/practicehtml/user_appointment.php" method="POST"><h1>Book an appointment</h1>
 	<div style="height:10px"></div>
   <div class="form-group"  >
-	<label for="itmname"><b>Item name</b></label>	
-	<input class="form-control-sm" type="text" id="item_name" name="item_name" placeholder="Enter Item name" required> <br/>
+	<label for="aptime"><b>Time</b></label>	
+	<input class="form-control-sm" type="text" id="app_time" name="app_time" placeholder="Enter Time HH:MM:SS" required> <br/>
   </div>
 
   <div class="form-group">
-	<label for="itmprice"><b>Item price</b></label>	
-	<input class="form-control-sm" type="number" id="item_price" name="item_price" placeholder="Enter price" required> <br/>
+	<label for="apdate"><b>Date</b></label>	
+	<input class="form-control-sm" type="text" id="app_date" name="app_date" placeholder="Enter Date YYYY/MM/DD" required> <br/>
   </div>
 
   <div class="form-group">
-  <label for="reid"><b>Restaurant ID</b></label>	
-	<input class="form-control-sm" type="number" id="restaurant_id" name="restaurant_id" placeholder="Enter between 1-3" required> <br/>
+  <label for="pname"><b>Patient name</b></label>	
+	<input class="form-control-sm" type="text" id="patient_name" name="patient_name" placeholder="Enter between 1-3" required> <br/>
+  </div>
+
+  <div class="form-group">
+  <label for="gpidd"><b>GP ID</b></label>	
+	<input class="form-control-sm" type="number" id="gp_id" name="gp_id" placeholder="Enter gp id (1-3)" required> <br/>
+  </div>
+
+  <div class="form-group">
+  <label for="patientsid"><b>Patient ID</b></label>	
+	<input class="form-control-sm" type="number" id="patient_id" name="patient_id" placeholder="Enter your patient id" required> <br/>
   </div>
 
 	<button class="btn btn-info" type="submit" id="item_submit">Submit item</button>

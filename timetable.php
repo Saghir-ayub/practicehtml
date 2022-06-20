@@ -56,12 +56,14 @@ if(isset($_SESSION['username'])) {
 </nav>
 </div>
 <div class="text-center-class">
+  <h2 class="text-center-class">All the appointments</h2> <br/>
+  <h9>Application id  || Time  || Date || Patient name || Status GP_ID ||  Patient_ID</h9> <br/>
 <?php
-$db = new SQLite3('stuffed_face.sq3');
-$sql = "SELECT * FROM Restaurant";
+$db = new SQLite3('gp_appointments.sq3');
+$sql = "SELECT * FROM Appointment";
 $result = $db->query($sql);
 while ($row = $result->fetchArray(SQLITE3_ASSOC)){
-  echo $row['id'] . ': ' . $row['name'] . '<br/>';
+  echo $row['App_id'] . '|| ' . $row['Time'] . '||' . $row['Date'] .'|| ' . $row['Patient_name'] .'||' . $row['Confirmation'] .'|| ' . $row['GP_id'] .'||' . $row['Patient_id'] .'<br/>';
 }
 unset($db);
 ?>
@@ -79,10 +81,6 @@ function php_func(){
     ON Lunch_order.restaurant_id=Restaurant.id
     GROUP BY restaurant.name
     ORDER BY TOTAL ASC;";
-    // $sql_2 = "DELETE from Lunch_Order WHERE Lunch_order.Order_date='2013-11-05'";
-    // $sql_3 = "DELETE from Order_Item WHERE Order_item.id=14";
-    // $result_3 = $db->query($sql_3);
-    // $result_2 = $db->query($sql_2);
     $result = $db->query($sql);
     while ($row = $result->fetchArray(SQLITE3_ASSOC)){
       echo $row['name'] . ': $' . $row['TOTAL'] . '<br/>';
@@ -90,7 +88,7 @@ function php_func(){
     unset($db);
 }
 ?>
-<button onclick="clickMe()"> Total money made by each restaurant </button>
+<button onclick="clickMe()"> Appointments today </button>
 <div id="resultDiv" class="text-center-class"></div>
 <script>
     function clickMe(){

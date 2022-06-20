@@ -62,11 +62,11 @@ if(isset($_SESSION['username'])) {
 	<div class="row align-items-center justify-content-md-center" style="height:auto">
 		<div class="col-md-auto text-center-class">
 <?php
-$db = new SQLite3('stuffed_face.sq3');
-$sql = "SELECT * FROM Item WHERE Item.restaurant_id=2";
+$db = new SQLite3('gp_appointments.sq3');
+$sql = "SELECT * FROM Appointment WHERE Confirmation = 'Pending'";
 $result = $db->query($sql);
 while ($row = $result->fetchArray(SQLITE3_ASSOC)){
-  echo "<div style='height:30px'>".$row['id'] . ': ' . $row['name'] . "</div> <br/>";
+  echo "<div style='height:30px'>".$row['App_id'] . ': ' . $row['Time'] . "</div> <br/>";
 }
 //echo "<p>all the item names as buttons</p>";
 ?>
@@ -76,7 +76,8 @@ while ($row = $result->fetchArray(SQLITE3_ASSOC)){
 while($singlerow = $result->fetchArray()){
   echo "<div>
         <button onclick='app_u(this.id)' id='update_".$singlerow[0]."'>Approve</button>
-        <button onclick='app_d(this.id)' id='delete_".$singlerow[0]."'>Cancel</button>
+        <button onclick='app_c(this.id)' id='cancel_".$singlerow[0]."'>Cancel</button>
+        <button onclick='app_d(this.id)' id='delete_".$singlerow[0]."'>Delete</button>
         </div> <br/>";
 }
 unset($db);
@@ -107,6 +108,18 @@ unset($db);
     var $id_to_d = clicked_id_del.substring('delete_'.length);
     document.getElementById("hidden_delete").applicationiddelete.value = $id_to_d;
     document.forms.hidden_delete.submit()
+    };
+</script>
+
+<form id="hidden_cancel" action="cancel.php" method="post">
+  <input type="hidden" name="applicationidcancel" id="appointment_cancel" value="" />
+</form>
+<!-- <div id="appointment_accept" class="text-center-class"></div> -->
+<script>
+    function app_c(clicked_id_can){
+    var $id_to_c = clicked_id_can.substring('cancel_'.length);
+    document.getElementById("hidden_cancel").applicationidcancel.value = $id_to_c;
+    document.forms.hidden_cancel.submit()
     };
 </script>
 

@@ -1,26 +1,32 @@
 <?php 
 
-if (isset($_POST['item_name']) && isset($_POST['item_price']) && isset($_POST['restaurant_id'])) {
+if (isset($_POST['app_time']) && isset($_POST['app_date']) && isset($_POST['patient_name']) && isset($_POST['gp_id']) && isset($_POST['patient_id'])) {
     function validate($data){
 
-        $data = trim($data);
+        // $data = trim($data);
  
-        $data = stripslashes($data);
+        // $data = stripslashes($data);
  
-        $data = htmlspecialchars($data);
+        // $data = htmlspecialchars($data);
  
         return $data;
  
      }
-     $iname = validate($_POST['item_name']);
+     $apptime = validate($_POST['app_time']);
 
-     $iprice = validate($_POST['item_price']);
+     $appdate = validate($_POST['app_date']);
 
-     $rid = validate($_POST['restaurant_id']);
+     $patname = validate($_POST['patient_name']);
 
-     $db = new SQLite3('stuffed_face.sq3');
+     $gpid = validate($_POST['gp_id']);
 
-     $sql = "INSERT INTO Item VALUES(NULL,'" .$iname. "','" .$iprice. "','" .$rid."')";
+     $patid = validate($_POST['patient_id']);
+
+     $db = new SQLite3('gp_appointments.sq3');
+
+     $sql = "INSERT INTO Appointment VALUES(NULL,'" .$apptime. "','" .$appdate. "','" .$patname."','Pending'," .$gpid."," .$patid.")";
+
+     //$sql = "INSERT INTO Appointment VALUES(8, '13:30:00', '2022-06-22', 'Saghir', 'Cancelled', 1, 3)";
 
      $result = $db->query($sql);
 
