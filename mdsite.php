@@ -1,8 +1,9 @@
-<?php 
+<?php
 require("db_conn.php");
 
 ?>
 <html>
+
 <head>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"> </script>
 	<script src="mdscript.js"></script>
@@ -11,26 +12,28 @@ require("db_conn.php");
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
 	<title>MD website Login</title>
 </head>
+
 <body>
 
-<div>
+	<div>
 
-<?php
+		<?php
 
-?>
+		?>
 
 
-<div class="text-center-class">
-	<form action="/practicehtml/login_page.php" method="POST">Sign in to House MD
-	<div style="height:20px"></div>
-	<label for="uname"><b>Username</b></label>	
-	<input type="text" id="username" name="username" placeholder="Enter Username" required>
+		<div class="text-center-class">
+			<form action="/practicehtml/login_page.php" method="POST">Sign in to House MD
+				<div style="height:20px"></div>
+				<label for="uname"><b>Username</b></label>
+				<input type="text" id="username" name="username" placeholder="Enter Username" required>
 
-	<label for="psw"><b>Password</b></label>	
-	<input type="password" id="password" name="password" placeholder="Enter Password" required>
-	<button type="submit" id="login_submit">Login</button>
-	</form>
-</div>
-</div>
+				<label for="psw"><b>Password</b></label>
+				<input type="password" id="password" name="password" placeholder="Enter Password" required>
+				<button type="submit" id="login_submit">Login</button>
+			</form>
+		</div>
+	</div>
 </body>
+
 </html>

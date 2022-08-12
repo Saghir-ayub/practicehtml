@@ -55,10 +55,59 @@ if(isset($_SESSION['username'])) {
   </div>
 </nav>
 </div>
-<div class="text-center-class">
-  <h2 class="text-center-class">All the appointments</h2> <br/>
-  <h9>Application id  || Time  || Date || Patient name || Status GP_ID ||  Patient_ID</h9> <br/>
+
+<!-- all the buttons -->
+<button onclick="AllApp()"> All Appointments </button>
+<script>
+    function AllApp(){
+    var result ="<?php php_allapp(); ?>"
+    document.getElementById("appappinner").innerHTML = result;
+    document.getElementById("allappointments").style.display = "Block";
+    }
+</script>
+
+<button onclick="clickMe()"> Appointments today </button>
+<script>
+    function clickMe(){
+    var result ="<?php php_func(); ?>"
+    document.getElementById("resultDiv").innerHTML = result;
+    document.getElementById("appointmentstoday").style.display = "Block";
+    }
+</script>
+
+<button onclick="patsweek()"> Appointments completed this week (Sarita)</button>
+<script>
+    function patsweek(){
+    var result ="<?php php_patsweek(); ?>"
+    document.getElementById("patientsweek").innerHTML = result;
+    document.getElementById("patientsweekblock").style.display = "Block";
+    }
+</script>
+
+<!-- All the divs displaying results of queries -->
+<div class="text-center-class" id = "allappointments" style="display:none">
+  <h3 class="text-center-class">All the appointments</h3>
+  <h9>Application id  || Time  || Date || Patient name || Status || GP_ID ||  Patient_ID</h9> <br/>
+  <div id="appappinner" class="text-center-class"></div>
+</div>
+
+<div class="text-center-class" id = "appointmentstoday" style="display:none">
+<h3 class="text-center-class">All appointments today</h3>
+<h9>Application id  || Time  || Date || Patient name || Status || GP_ID ||  Patient_ID</h9> <br/>
+<div id="resultDiv" class="text-center-class"></div>
+</div>
+
+<div class="text-center-class" id = "patientsweekblock" style="display:none">
+<h3 class="text-center-class">All appointments completed this week (Sarita)</h3>
+<h9>GP Name  || Total</h9> <br/>
+<div id="patientsweek" class="text-center-class"></div>
+</div>
+
+
+
+<!-- All the functions doing the queries -->
 <?php
+function php_allapp(){
 $db = new SQLite3('gp_appointments.sq3');
 $sql = "SELECT * FROM Appointment";
 $result = $db->query($sql);
@@ -66,35 +115,37 @@ while ($row = $result->fetchArray(SQLITE3_ASSOC)){
   echo $row['App_id'] . '|| ' . $row['Time'] . '||' . $row['Date'] .'|| ' . $row['Patient_name'] .'||' . $row['Confirmation'] .'|| ' . $row['GP_id'] .'||' . $row['Patient_id'] .'<br/>';
 }
 unset($db);
+}
 ?>
-</div>
+
 <?php
 function php_func(){
-    $db = new SQLite3('stuffed_face.sq3');
-    $sql = "SELECT Restaurant.name, SUM(Order_item.quantity * Item.price) AS TOTAL
-    FROM Lunch_Order
-    JOIN Order_Item
-    ON Lunch_Order.id=Order_item.lunch_order_id
-    JOIN Item
-    ON Order_item.item_id = Item.id
-    JOIN Restaurant
-    ON Lunch_order.restaurant_id=Restaurant.id
-    GROUP BY restaurant.name
-    ORDER BY TOTAL ASC;";
+    $db = new SQLite3('gp_appointments.sq3');
+    $sql = "SELECT * FROM Appointment WHERE Date = '2022-06-20'";
     $result = $db->query($sql);
     while ($row = $result->fetchArray(SQLITE3_ASSOC)){
-      echo $row['name'] . ': $' . $row['TOTAL'] . '<br/>';
+      echo $row['App_id'] . '|| ' . $row['Time'] . '||' . $row['Date'] .'|| ' . $row['Patient_name'] .'||' . $row['Confirmation'] .'|| ' . $row['GP_id'] .'||' . $row['Patient_id'] . '<br/>';
     }
     unset($db);
 }
 ?>
-<button onclick="clickMe()"> Appointments today </button>
-<div id="resultDiv" class="text-center-class"></div>
-<script>
-    function clickMe(){
-    var result ="<?php php_func(); ?>"
-    document.getElementById("resultDiv").innerHTML = result;
-    }
-</script>
+
+<?php
+function php_patsweek(){
+$db = new SQLite3('gp_appointments.sq3');
+$sql = "SELECT GPs.Name, COUNT(*) AS Total
+FROM Appointment
+JOIN GPs
+ON GPs.GP_id = Appointment.GP_id
+WHERE Appointment.Confirmation = 'Completed' AND Appointment.Date BETWEEN '2013-01-01' AND '2022-06-24' AND Appointment.GP_id = 2
+";
+$result = $db->query($sql);
+while ($row = $result->fetchArray(SQLITE3_ASSOC)){
+  echo $row['Name'] . '|| ' . $row['Total'] .'<br/>';
+}
+unset($db);
+}
+?>
+
 </body>
 </html>
