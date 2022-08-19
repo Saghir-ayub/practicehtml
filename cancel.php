@@ -32,4 +32,3 @@ if (isset($_POST['applicationidcancel'])) {
     exit();
 
 }
-?>

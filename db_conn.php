@@ -16,5 +16,3 @@ $password = "";
 
 
 //mysqli_close($conn);
-
-?>
